@@ -7,24 +7,26 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index()
-{
-    $products = [
-        1 => "Ноутбук",
-        2 => "Навушники",
-        3 => "Клавіатура"
-    ];
+    {
+        $products = [
+            1 => "Ноутбук",
+            2 => "Навушники",
+            3 => "Клавіатура"
+        ];
 
-    $output = "";
-    foreach ($products as $id => $name) {
-        $output .= $id . ". " . $name . "\n";
+        return view('products.index', compact('products'));
     }
-
-    return nl2br($output); 
-}
-
 
     public function show($id)
     {
-        return "Сторінка товару з ID: " . $id;
+        $products = [
+            1 => "Ноутбук",
+            2 => "Навушники",
+            3 => "Клавіатура"
+        ];
+
+        $name = $products[$id] ?? "Невідомий товар";
+
+        return view('products.show', compact('id', 'name'));
     }
 }
