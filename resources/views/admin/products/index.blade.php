@@ -13,6 +13,10 @@
         </div>
     @endif
 
+            <a href="{{ route('admin.products.create') }}" class="btn btn-primary mb-3">
+        Додати товар
+        </a>
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Таблиця товарів</h3>

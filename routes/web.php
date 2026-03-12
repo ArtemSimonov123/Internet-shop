@@ -15,5 +15,5 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', AdminProductController::class)
-        ->only(['index', 'show', 'destroy']);
+    ->only(['index', 'show', 'destroy', 'create', 'store']);
 });
