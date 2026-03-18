@@ -13,9 +13,11 @@
         </div>
     @endif
 
-            <a href="{{ route('admin.products.create') }}" class="btn btn-primary mb-3">
-        Додати товар
+    @auth
+        <a href="{{ route('admin.products.create') }}" class="btn btn-primary mb-3">
+            Додати товар
         </a>
+    @endauth
 
     <div class="card">
         <div class="card-header">
@@ -46,15 +48,17 @@
                                     Перегляд
                                 </a>
 
-                                <form action="{{ route('admin.products.destroy', $product) }}"
-                                      method="POST"
-                                      onsubmit="return confirm('Видалити товар?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        Видалити
-                                    </button>
-                                </form>
+                                @auth
+                                    <form action="{{ route('admin.products.destroy', $product) }}"
+                                          method="POST"
+                                          onsubmit="return confirm('Видалити товар?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Видалити
+                                        </button>
+                                    </form>
+                                @endauth
                             </td>
                         </tr>
                     @endforeach
