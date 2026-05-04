@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     // GET /api/products
-    public function index()
-    {
-        return Product::all();
+    public function index(Request $request)
+{
+    $query = Product::query();
+
+    if ($request->has('category')) {
+        $query->where('category', $request->category);
     }
+
+    return $query->get();
+}
 
     // GET /api/products/{id}
     public function show($id)
